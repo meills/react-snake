@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from './components/Grid.js';
 import './styles/App.css';
-import './styles/snakeboard.css';
 
 
 function App() {
