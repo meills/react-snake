@@ -22,8 +22,7 @@ class Grid extends React.Component {
         const snake = {head: {}};
         const food = this.getFood();
         
-        snake.head = this.getGridCenter();
-        console.log(snake.head);
+        snake.head = this.getGridCenter;
 
         //this.setState = {snake: { head: this.getGridCenter(), }};
 
@@ -36,8 +35,6 @@ class Grid extends React.Component {
         }
         
         this.setState = {grid: grid};
-        
-        console.log(this.state.grid);
     }
 
     getFood() {
@@ -58,7 +55,7 @@ class Grid extends React.Component {
     render() {
         const gridItems = this.state.grid.map((grid) => {
             return <div key={grid.row.toString() + "," + grid.col.toString()} 
-                        className={(grid.isFood ? "grid-item is-food" : "grid-item") + (grid.isHead ? " snake-head" : "") }> 
+                        className={(grid.isFood ? "grid-item is-food" : "grid-item") + (grid.isHead ? "snake-head" : "") }> 
                     </div>;
         });
 
