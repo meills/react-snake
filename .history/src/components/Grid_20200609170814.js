@@ -1,6 +1,7 @@
 import React from 'react';
 
 const GRID_SIZE = 10;
+const TICK_TIME = 500;
 
 class Grid extends React.Component {
     constructor() {
@@ -16,14 +17,16 @@ class Grid extends React.Component {
               head: {},
           },
           currDir: 'right',
+          tickTime: TICK_TIME,
         };
 
-        const grid = [];
         const snake = {head: {}};
         const food = this.getFood();
         
-        snake.head = this.getGridCenter();
-        console.log(snake.head);
+        snake.head = this.getGridCenter;
+        this.state.snake.head = snake.head;
+
+        console.log( this.state.snake.head)
 
         //this.setState = {snake: { head: this.getGridCenter(), }};
 
@@ -34,9 +37,7 @@ class Grid extends React.Component {
             this.state.grid.push({ row, col, isFood, isHead});
           }
         }
-        
-        this.setState = {grid: grid};
-        
+                
         console.log(this.state.grid);
     }
 
@@ -55,10 +56,44 @@ class Grid extends React.Component {
         });
     }
 
+    gameTick() {
+        let {currDir} = this.state;
+        let {row, col} = this.state.snake.head;
+
+
+        switch (currDir) {
+            case 'left':
+                col--;
+                break;
+
+            case 'right':
+                col++;
+                break;
+
+            case 'up':
+                row--;
+                break;
+
+            case 'down':
+                row++;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+   componentDidMount() {
+        window.fnInterval = setInterval(() => {
+            this.gameTick();
+        }, this.state.tickTime);
+    }
+
     render() {
         const gridItems = this.state.grid.map((grid) => {
             return <div key={grid.row.toString() + "," + grid.col.toString()} 
-                        className={(grid.isFood ? "grid-item is-food" : "grid-item") + (grid.isHead ? " snake-head" : "") }> 
+                        className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
+                                  + (grid.isHead ? " snake-head" : "") }> 
                     </div>;
         });
 

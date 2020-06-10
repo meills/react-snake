@@ -1,5 +1,5 @@
 import React from 'react';
-import Snakeboard from './components/Snakeboard.js';
+import Snakebord from './components/Snakeboard.js';
 import './styles/App.css';
 import './styles/snakeboard.css';
 
