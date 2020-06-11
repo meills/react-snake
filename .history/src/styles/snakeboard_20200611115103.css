@@ -7,7 +7,6 @@
 }
 
 .grid {
-    outline: 1px solid black;
     width: 500px;
     height: 500px;
     margin: auto;
@@ -17,7 +16,7 @@
 }
 
 .grid-item {
-    outline: 1px solid grey;
+    outline: 1px solid;
     width: 50px;
     height: 50px;
 }

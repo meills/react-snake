@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GRID_SIZE = 10;
-const TICK_TIME = 500;
+const TICK_TIME = 100;
 
 class Snakeboard extends React.Component {
     state = {
@@ -65,9 +65,7 @@ class Snakeboard extends React.Component {
           }
         } 
 
-        this.setState({grid: grid, food: food, snake: snake,}, () => {
-            console.log(this.state.grid);
-        });
+        this.setState({grid: grid, food: food, snake: snake,});
     }
 
     resetGrid(state) {
@@ -122,8 +120,6 @@ class Snakeboard extends React.Component {
 
     componentDidMount() {
         this.initGrid();
-
-        console.log(this.state.grid);
 
         document.addEventListener('keydown', this.handleKeyPress);
             

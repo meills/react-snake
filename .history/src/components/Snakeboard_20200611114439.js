@@ -1,7 +1,7 @@
 import React from 'react';
 
 const GRID_SIZE = 10;
-const TICK_TIME = 500;
+const TICK_TIME = 100;
 
 class Snakeboard extends React.Component {
     state = {
