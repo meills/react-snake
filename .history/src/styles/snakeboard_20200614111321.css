@@ -6,12 +6,6 @@
     justify-content: center;
 }
 
-.start-screen {
-    background-color: white;
-    opacity: 50;
-    position: absolute;
-}
-
 .grid {
     outline: 1px solid black;
     width: 600px;

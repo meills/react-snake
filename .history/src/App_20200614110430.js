@@ -5,13 +5,20 @@ import './styles/snakeboard.css';
 
 
 class App extends React.Component {
-
+  state = {
+    gameStart: false,
+  }
 
 
   render() {
-    return (<div className="snake-container"> 
-              <Snakeboard />
-            </div>);
+
+    if(!gameStart) {
+
+    } else {
+      return (<div className="snake-container"> 
+                <Snakeboard />
+               </div>);
+    }
   }
 
 }

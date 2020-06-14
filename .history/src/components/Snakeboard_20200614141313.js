@@ -186,7 +186,7 @@ class Snakeboard extends React.Component {
     }
 
     render() {
-        if (!this.state.gameOver) {
+        if (!this.state/gameOver) {
             const gridItems = this.state.grid.map((grid) => {
                 return <div key={grid.row.toString() + "," + grid.col.toString()} 
                             className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
@@ -197,7 +197,7 @@ class Snakeboard extends React.Component {
     
             return (<div className='grid'> {gridItems} </div>);
         } else {
-            return <div className='grid'> Game Over </div>
+
         }
 
 

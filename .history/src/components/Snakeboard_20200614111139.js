@@ -15,6 +15,7 @@ class Snakeboard extends React.Component {
         },
         currDir: 'right',
         tickTime: TICK_TIME,
+        gameStart: false,
         gameOver: false,
     } 
 
@@ -51,6 +52,9 @@ class Snakeboard extends React.Component {
                 break;
         }
 
+        this.checkGameOver(newCol, newRow);
+
+
         let {food} = this.state;
         let {head} = this.state.snake;
         let {tail} = this.state.snake;
@@ -67,7 +71,6 @@ class Snakeboard extends React.Component {
 
 
         this.setState({snake: { head: {row: newRow, col: newCol}, tail: tail}});
-        this.checkGameOver();
 
         this.resetGrid(this.state);
     }
@@ -121,24 +124,21 @@ class Snakeboard extends React.Component {
         };
     }
 
-    checkGameOver() {
-        if (this.state.snake.tail.length > 0) {
-            const {row, col} = this.state.snake.tail[0];
+    checkGameOver(newCol, newRow) {
 
-            if (col >= GRID_SIZE || row >= GRID_SIZE || col < GRID_SIZE || row < GRID_SIZE) {
-                console.log("game over");
-                this.setState({gameOver: true});
-                return;
-            }
-    
-            for (let i = 0; i < this.state.snake.tail.length; i++) {
-                if (this.state.snake.tail[i].row === row && this.state.snake.tail[i].col === col) {
-                    console.log("snake ate tail");
-                    this.setState({gameOver: true});
-                    return;
-                }
+        if (newCol >= GRID_SIZE || newRow >= GRID_SIZE || newCol < GRID_SIZE || newRow < GRID_SIZE) {
+            console.log("game over");
+        }
+
+        for (let i = 0; i < this.state.snake.tail.length; i++) {
+            if (this.state.snake.tail[i].row === newRow && this.state.snake.tail[i].col === newCol) {
+                console.log("snake ate tail");
+                break;
             }
         }
+
+
+
     }
 
     getGridCenter() {
@@ -186,22 +186,15 @@ class Snakeboard extends React.Component {
     }
 
     render() {
-        if (!this.state.gameOver) {
-            const gridItems = this.state.grid.map((grid) => {
-                return <div key={grid.row.toString() + "," + grid.col.toString()} 
-                            className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
-                                      + (grid.isHead ? " snake-head" : ""
-                                      + (grid.isTail ? " snake-tail" : "")) }> 
-                        </div>;
-            });
-    
-            return (<div className='grid'> {gridItems} </div>);
-        } else {
-            return <div className='grid'> Game Over </div>
-        }
+        const gridItems = this.state.grid.map((grid) => {
+            return <div key={grid.row.toString() + "," + grid.col.toString()} 
+                        className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
+                                  + (grid.isHead ? " snake-head" : ""
+                                  + (grid.isTail ? " snake-tail" : "")) }> 
+                    </div>;
+        });
 
-
-
+    return (<div className='grid'> {gridItems} </div>);
     }
 }
 

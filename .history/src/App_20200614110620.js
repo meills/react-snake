@@ -12,7 +12,6 @@ class App extends React.Component {
     return (<div className="snake-container"> 
               <Snakeboard />
             </div>);
-  }
 
 }
 

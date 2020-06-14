@@ -6,19 +6,12 @@
     justify-content: center;
 }
 
-.start-screen {
-    background-color: white;
-    opacity: 50;
-    position: absolute;
-}
-
 .grid {
     outline: 1px solid black;
     width: 600px;
     height: 600px;
     margin: auto;
     display: flex;
-    position: absolute;
     flex-direction: row;
     flex-wrap: wrap;
 }

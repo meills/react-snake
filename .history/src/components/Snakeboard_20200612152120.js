@@ -1,7 +1,7 @@
 import React from 'react';
 
-const GRID_SIZE = 30;
-const TICK_TIME = 100;
+const GRID_SIZE = 10;
+const TICK_TIME = 500;
 
 class Snakeboard extends React.Component {
     state = {
@@ -11,11 +11,10 @@ class Snakeboard extends React.Component {
         food: {},
         snake: {
             head: {},
-            tail: [],
+            tail: {},
         },
         currDir: 'right',
         tickTime: TICK_TIME,
-        gameOver: false,
     } 
 
 
@@ -52,22 +51,20 @@ class Snakeboard extends React.Component {
         }
 
         let {food} = this.state;
-        let {head} = this.state.snake;
-        let {tail} = this.state.snake;
-    
+        
+
         // When snake eats food
         if (food.row === row && food.col === col) {
             const newFood = this.getFood();
             this.setState({food: newFood});
-            tail.unshift(head);
-        } else {
-            tail.unshift(head);
-            tail.pop();
+
+            console.log(this.state);
+
         }
 
+        let {head} = this.state.snake;
 
-        this.setState({snake: { head: {row: newRow, col: newCol}, tail: tail}});
-        this.checkGameOver();
+        this.setState({snake: { head: {row: newRow, col: newCol}, tail: head}});
 
         this.resetGrid(this.state);
     }
@@ -77,7 +74,7 @@ class Snakeboard extends React.Component {
     initGrid() {
         const grid = [];
         const food = this.getFood();
-        const snake = {head: this.getGridCenter(), tail: [],};
+        const snake = {head: this.getGridCenter()};
    
         for (let row = 0; row < this.state.rows; row++) {
           for (let col = 0; col < this.state.cols; col++) {
@@ -87,8 +84,9 @@ class Snakeboard extends React.Component {
           }
         } 
 
-        this.setState({grid: grid, food: food, snake: snake,});
-        console.log(this.state.snake.tail);
+        this.setState({grid: grid, food: food, snake: snake,}, () => {
+            console.log(this.state.grid);
+        });
     }
 
     // Resets grid with a given state
@@ -99,15 +97,7 @@ class Snakeboard extends React.Component {
           for (let col = 0; col < state.cols; col++) {
             const isFood = row === state.food.row && col === state.food.col;
             const isHead = row === state.snake.head.row && col === state.snake.head.col;
-            let isTail = false;
-
-            for (let i = 0; i < state.snake.tail.length; i++) {
-                if (state.snake.tail[i].row === row && state.snake.tail[i].col === col) {
-                    isTail = true;
-                    break;
-                }
-            }
-
+            const isTail = row === state.snake.tail.row && col ===ß state.snake.tail.col;
             grid.push({ row, col, isFood, isHead, isTail});
           }
         }  
@@ -119,26 +109,6 @@ class Snakeboard extends React.Component {
             row: Math.floor(Math.random() * GRID_SIZE), 
             col: Math.floor(Math.random() * GRID_SIZE),
         };
-    }
-
-    checkGameOver() {
-        if (this.state.snake.tail.length > 0) {
-            const {row, col} = this.state.snake.tail[0];
-
-            if (col >= GRID_SIZE || row >= GRID_SIZE || col < GRID_SIZE || row < GRID_SIZE) {
-                console.log("game over");
-                this.setState({gameOver: true});
-                return;
-            }
-    
-            for (let i = 0; i < this.state.snake.tail.length; i++) {
-                if (this.state.snake.tail[i].row === row && this.state.snake.tail[i].col === col) {
-                    console.log("snake ate tail");
-                    this.setState({gameOver: true});
-                    return;
-                }
-            }
-        }
     }
 
     getGridCenter() {
@@ -173,10 +143,14 @@ class Snakeboard extends React.Component {
 
     componentDidMount() {
         this.initGrid();
+
+        console.log(this.state.grid);
+
         document.addEventListener('keydown', this.handleKeyPress);
             
         window.fnInterval = setInterval(() => {
             this.gameTick();
+            //console.log(this.state);
         }, this.state.tickTime);
         
     }
@@ -186,22 +160,15 @@ class Snakeboard extends React.Component {
     }
 
     render() {
-        if (!this.state.gameOver) {
-            const gridItems = this.state.grid.map((grid) => {
-                return <div key={grid.row.toString() + "," + grid.col.toString()} 
-                            className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
-                                      + (grid.isHead ? " snake-head" : ""
-                                      + (grid.isTail ? " snake-tail" : "")) }> 
-                        </div>;
-            });
-    
-            return (<div className='grid'> {gridItems} </div>);
-        } else {
-            return <div className='grid'> Game Over </div>
-        }
+        const gridItems = this.state.grid.map((grid) => {
+            return <div key={grid.row.toString() + "," + grid.col.toString()} 
+                        className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
+                                  + (grid.isHead ? " snake-head" : ""
+                                  + (grid.isTail ? " snake-tail" : "")) }> 
+                    </div>;
+        });
 
-
-
+    return (<div className='grid'> {gridItems} </div>);
     }
 }
 

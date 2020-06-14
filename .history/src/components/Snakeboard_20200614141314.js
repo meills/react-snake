@@ -197,7 +197,7 @@ class Snakeboard extends React.Component {
     
             return (<div className='grid'> {gridItems} </div>);
         } else {
-            return <div className='grid'> Game Over </div>
+
         }
 
 

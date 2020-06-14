@@ -4,16 +4,15 @@ import './styles/App.css';
 import './styles/snakeboard.css';
 
 
-class App extends React.Component {
-
-
-
-  render() {
-    return (<div className="snake-container"> 
-              <Snakeboard />
-            </div>);
+function App() {
+  state = {
+    
   }
 
+
+  return (<div className="snake-container"> 
+            <Snakeboard />
+          </div>);
 }
 
 export default App;

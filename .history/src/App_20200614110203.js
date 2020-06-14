@@ -5,7 +5,9 @@ import './styles/snakeboard.css';
 
 
 class App extends React.Component {
-
+  state = {
+    gameStart: false,
+  }
 
 
   render() {

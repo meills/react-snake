@@ -127,15 +127,12 @@ class Snakeboard extends React.Component {
 
             if (col >= GRID_SIZE || row >= GRID_SIZE || col < GRID_SIZE || row < GRID_SIZE) {
                 console.log("game over");
-                this.setState({gameOver: true});
-                return;
             }
     
             for (let i = 0; i < this.state.snake.tail.length; i++) {
                 if (this.state.snake.tail[i].row === row && this.state.snake.tail[i].col === col) {
                     console.log("snake ate tail");
-                    this.setState({gameOver: true});
-                    return;
+                    break;
                 }
             }
         }
@@ -186,21 +183,21 @@ class Snakeboard extends React.Component {
     }
 
     render() {
-        if (!this.state.gameOver) {
-            const gridItems = this.state.grid.map((grid) => {
-                return <div key={grid.row.toString() + "," + grid.col.toString()} 
-                            className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
-                                      + (grid.isHead ? " snake-head" : ""
-                                      + (grid.isTail ? " snake-tail" : "")) }> 
-                        </div>;
-            });
-    
+        const gridItems = this.state.grid.map((grid) => {
+            return <div key={grid.row.toString() + "," + grid.col.toString()} 
+                        className={ (grid.isFood ? "grid-item is-food" : "grid-item") 
+                                  + (grid.isHead ? " snake-head" : ""
+                                  + (grid.isTail ? " snake-tail" : "")) }> 
+                    </div>;
+        });
+
+        //if (this.state.gameStart) {
             return (<div className='grid'> {gridItems} </div>);
-        } else {
-            return <div className='grid'> Game Over </div>
-        }
-
-
+        //} else {
+        //    return ( <React.Fragment><div className='grid'> <div className='grid'> {gridItems} </div> </div>
+        //    <div className='start-screen'> <h1> Welcome to Snake </h1></div></React.Fragment>
+        //    );
+        //}
 
     }
 }
