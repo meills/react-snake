@@ -107,8 +107,8 @@ class Snake extends React.Component {
 
         for (let row = 0; row < state.rows; row++) {
           for (let col = 0; col < state.cols; col++) {
-            const isFood = 
-            const isHead = isHead(row, col);
+            const isFood = row === state.food.row && col === state.food.col;
+            const isHead = row === state.snake.head.row && col === state.snake.head.col;
             let isTail = false;
 
             for (let i = 0; i < state.snake.tail.length; i++) {
@@ -124,42 +124,14 @@ class Snake extends React.Component {
         this.setState({grid: grid});
     }
 
-    // This method gets the new coords of the food grid on the board 
     getFood() {
-        let row, col;
 
-        do {
-            row = Math.floor(Math.random() * GRID_SIZE);
-            col = Math.floor(Math.random() * GRID_SIZE);
-        } while(this.tailContains(row, col) || this.isHead);
+        while()
 
-        return {row: row, col: col};
-
+        row = Math.floor(Math.random() * GRID_SIZE);
+        col = Math.floor(Math.random() * GRID_SIZE);
     }
 
-    // This method checks if the row and col coords of a grid are part of the tail of the snake
-    tailContains(row, col) {
-        for (let i = 0; i < state.snake.tail.length; i++) {
-            if (state.snake.tail[i].row === row && state.snake.tail[i].col === col) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    // This method check if the row and col coords of a grid are the head of the snake
-    isHead(row, col) {
-        return row === this.state.snake.head.row && col === this.state.snake.head.col;
-    }
-
-    // This method checks if a grid is food
-    isFood(row, col) {
-        return row === this.state.food.row && col === this.state.food.col;
-    }
-
-
-    // Thids method checks if the game is over
     checkGameOver() {
         const {row, col} = this.state.snake.head;
 
@@ -186,7 +158,6 @@ class Snake extends React.Component {
         return false;
     }
 
-    // This method returns the central grid on the board
     getGridCenter() {
         return ({ 
             row: Math.floor(GRID_SIZE/2),

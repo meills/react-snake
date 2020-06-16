@@ -137,7 +137,6 @@ class Snake extends React.Component {
 
     }
 
-    // This method checks if the row and col coords of a grid are part of the tail of the snake
     tailContains(row, col) {
         for (let i = 0; i < state.snake.tail.length; i++) {
             if (state.snake.tail[i].row === row && state.snake.tail[i].col === col) {
@@ -148,18 +147,14 @@ class Snake extends React.Component {
         return false;
     }
 
-    // This method check if the row and col coords of a grid are the head of the snake
     isHead(row, col) {
         return row === this.state.snake.head.row && col === this.state.snake.head.col;
     }
 
-    // This method checks if a grid is food
     isFood(row, col) {
         return row === this.state.food.row && col === this.state.food.col;
     }
 
-
-    // Thids method checks if the game is over
     checkGameOver() {
         const {row, col} = this.state.snake.head;
 
@@ -186,7 +181,6 @@ class Snake extends React.Component {
         return false;
     }
 
-    // This method returns the central grid on the board
     getGridCenter() {
         return ({ 
             row: Math.floor(GRID_SIZE/2),
