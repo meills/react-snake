@@ -107,8 +107,8 @@ class Snake extends React.Component {
 
         for (let row = 0; row < state.rows; row++) {
           for (let col = 0; col < state.cols; col++) {
-            const isFood = this.isFoodCheck(row,col);
-            const isHead = this.isHeadCheck(row, col);
+            const isFood = isFoodCheck(row,col);
+            const isHead = isHeadCheck(row, col);
             let isTail = false;
 
             for (let i = 0; i < state.snake.tail.length; i++) {
