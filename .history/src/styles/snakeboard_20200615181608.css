@@ -1,0 +1,110 @@
+.snake-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome {
+    width: 600px;
+    height: 600px;
+    outline: 1px solid black;
+    display: flex;
+    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.welcome-message {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.snake-image {
+    margin-bottom: 3em;
+    max-width: 20%;
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    -webkit-animation-name: spin;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    24% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    49% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    74% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+button {
+    background-color:red; /* Green */
+    border: none;
+    color: white;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 0.5em;
+}
+
+
+.grid {
+    outline: 1px solid black;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 20px;
+    height: 20px;
+}
+
+.is-food {
+    background-color: red;
+}
+
+
+.snake-head {
+    background-color: black;
+}
+
+.snake-tail {
+    background-color: black;
+}
+

@@ -1,0 +1,56 @@
+import React from 'react';
+import Game from './components/Game.js';
+import Welcome from './components/Welcome.js';
+import GameOver from './components/GameOver.js';
+import './styles/App.css';
+import './styles/snakeboard.css';
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.startGame = this.startGame.bind(this);
+    this.endGame = this.endGame.bind(this);
+    this.restartGame = this.restartGame.bind(this);
+  }
+
+  state = {
+    gameStart: false,
+    gameOver: false,
+  } 
+
+  startGame() {
+    this.setState({gameStart: true, gameOver: false});
+  }
+
+  endGame() {
+    this.setState({gameStart:false, gameOver: true});
+  }
+
+  restartGame() {
+    this.setState({gameStart:true, gameOver: false});
+  }
+
+  render() {
+    console.log(this.state);
+
+    if (this.state.gameStart) {
+      return (<div className='snake-container'> 
+                <Game endGame={this.endGame}/>
+              </div>);
+    } 
+    
+    if (this.state.gameOver) {
+      return(<div className='snake-container'><GameOver restartGame={this.restartGame}/></div>)
+    }
+
+    if (!this.state.gameStart) {
+      return (<div className='snake-container'> 
+                <Welcome startGame={this.startGame} />
+              </div>);
+    }
+  }
+
+}
+
+export default App;

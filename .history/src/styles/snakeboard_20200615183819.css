@@ -1,0 +1,107 @@
+body {
+    background-image: url("../images/pixel-tile.png");
+    background-repeat: repeat;
+}
+
+
+
+.snake-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome {
+    background-color: black;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.welcome-message {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.snake-image {
+    margin-bottom: 3em;
+    max-width: 20%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    -webkit-animation: animate 5s linear infinite;
+    animation: animate 5s linear infinite;
+}
+
+@-webkit-keyframes animate {
+    to {
+        -webkit-transform: rotateY(-360deg);
+                transform: rotateY(-360deg);
+    }
+}
+
+@keyframes animate {
+    to {
+        -webkit-transform: rotateY(-360deg);
+                transform: rotateY(-360deg);
+    }
+}
+
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    padding: 1em 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 0.5em;
+}
+
+button:hover {
+    background: darkblue;
+}
+
+
+.grid {
+    outline: 1px solid black;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 20px;
+    height: 20px;
+}
+
+.is-food {
+    background-color: red;
+}
+
+
+.snake-head {
+    background-color: black;
+}
+
+.snake-tail {
+    background-color: black;
+}
+

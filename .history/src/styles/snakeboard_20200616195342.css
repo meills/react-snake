@@ -1,0 +1,124 @@
+body {
+    background-image: url("../images/pixel-tile.png");
+    background-repeat: repeat;
+}
+
+.snake-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-message-window {
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+    width: 40vw;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.snake-title {
+    color: white;
+    font-size: 4vw;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    letter-spacing: 20px;
+}
+
+.snake-image {
+    margin-bottom: 3em;
+    max-width: 20%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    -webkit-animation: animate 5s linear infinite;
+    animation: animate 5s linear infinite;
+}
+
+@-webkit-keyframes animate {
+    to {
+        -webkit-transform: rotateY(-360deg);
+                transform: rotateY(-360deg);
+    }
+}
+
+@keyframes animate {
+    to {
+        -webkit-transform: rotateY(-360deg);
+                transform: rotateY(-360deg);
+    }
+}
+
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+    color: white;
+    padding: 1em 1em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5vw;    
+}
+
+button:hover {
+    color: gray;
+}
+
+
+.grid {
+    background:black;
+    width: 40vw;
+    height: 40vw;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 3.33333333333333%;
+    height: 3.33333333333333%;
+
+
+}
+
+.is-food {
+    background-color: red;
+}
+
+
+.snake-head {
+    background-color:#39ff14;
+}
+
+.snake-tail {
+    background-color: #39ff14;
+}
+
+.game-over-message {
+    color: red;
+    font-size: 2em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+}
+
+.score {
+    color: palegoldenrod;
+}

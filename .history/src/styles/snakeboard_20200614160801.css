@@ -1,0 +1,42 @@
+.snake-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-screen {
+    background-color: white;
+    opacity: 50;
+    position: absolute;
+}
+
+.grid {
+    outline: 1px solid black;
+    width: 10em;
+    height: 10em;
+    margin: auto;
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 20px;
+    height: 20px;
+}
+
+.is-food {
+    background-color: red;
+}
+
+
+.snake-head {
+    background-color: black;
+}
+
+.snake-tail {
+    background-color: black;
+}
