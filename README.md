@@ -18,3 +18,7 @@ This project was deployed with [Heroku] (https://devcenter.heroku.com/categories
 
 This Medium article was used for reference when building this project — https://medium.com/swlh/how-i-created-a-snake-game-in-react-7743fc599084 
 
+
+
+
+(hint: press 't')
