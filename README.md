@@ -8,7 +8,7 @@ Fork the code and run the following on the command line in the react-snake direc
 
 ### npm start
 
- The application can also be access at https://cryptic-eyrie-41228.herokuapp.com/
+ The application can also be access at https://react-snake-meills.herokuapp.com/
 
 ## Acknowledgements
 
